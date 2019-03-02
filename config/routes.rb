@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :comments
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -8,7 +8,18 @@ Rails.application.routes.draw do
     #get 'logout', to: 'devise/sessions#destroy'
   end
 
-  resources :posts
-  resources :users
+  root to: 'static#welcome'
+
+  resources :posts do 
+    member do
+      get '/cheer' => 'posts#cheer'
+    end
+  end
+
+  resources :users do
+    resources :posts do
+      resources :comments
+    end
+  end
   resources :comments
 end
