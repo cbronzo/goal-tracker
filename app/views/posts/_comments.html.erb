@@ -1,0 +1,8 @@
+<h4>Comments</h4>
+
+<% @post.comments.each do |comment| %>
+  <%= comment.created_at %><br>
+  <%= comment.comment_text %><br>
+<% end %>
+
+<%= render 'comment_form' %>
