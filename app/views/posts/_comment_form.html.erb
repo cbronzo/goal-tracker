@@ -1,5 +1,4 @@
-<h6>New comment</h6>
 <%= form_for @post.comments.new, url: "/users/#{@post.user_id}/posts/#{@post.id}/comments" do |f| %>
-  <%= f.text_area :comment_text %>
+  <%= f.text_area :comment_text %> <br>
   <%= f.submit %>
 <% end %>

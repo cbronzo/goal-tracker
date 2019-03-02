@@ -1,11 +1,13 @@
-<h1>Hello World</h1>
+<h1>My Goals:</h1>
 
-<%= link_to 'New post', new_post_path %>
+<%= link_to 'Create a New Goal', new_post_path %> <br>
+
+
 
 <% @posts.each do |post| %>
   <div>
-    Title: <%= post.title %><br>
-    Description: <%= post.description %>
-    <%= link_to 'Open', post_path(post) %>
+    <h3><%= link_to post.title.capitalize, post_path(post) %>!</h3>
+    <i><%= post.description %></i>
   </div>
+  <br>
 <% end %>

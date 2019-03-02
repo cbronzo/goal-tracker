@@ -1,17 +1,17 @@
-<h2>Create a New Goal</h2>
+<h1>Create a New Goal</h1>
 <div>
  <%= form_for @post do |f| %>
-   <label>Title</label>
+   <b><label>My goal is to...</label></b>
    <br>
    <%= f.text_field :title %>
    <br>
    <br>
-   <label>Description</label>
+   <b><label>About my goal:</label></b>
    <br>
    <%= f.text_area :description %>
    <br>
    <br>
-   <label>Due Date</label>
+   <b><label>I'd like to have it done by?</label></b>
    <br>
    <%= f.text_field :due_date %>
    <br>

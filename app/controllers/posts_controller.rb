@@ -36,13 +36,18 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      redirect_to posts_path
+      redirect_to posts_path, notice: "Post Deleted"
     else
-      redirect_to post_path(@post), error: 'Could not destroy'
+      redirect_to post_path(@post), error: 'Unable to Delete'
     end
   end
 
-  protected
+  # def add_cheer
+  #   @cheer = Post.cheer
+  #   @cheer.sum(:total)
+  # end
+
+  private
 
   def set_post
     @post = Post.find params[:id]

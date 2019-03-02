@@ -1,12 +1,18 @@
 
-<h2><%= @post.title %></h2> <br>
+<h1>My goal is to <u><%= @post.title.downcase %></u>!</h1>
 
-<p><%= @post.description %>
+<h3><b>About my goal:</b></h3>
+<p><i><%= @post.description %></i>
+  <br>
+  <h3><b>I am going to have this done by:</b></h3>
 <p><%= @post.due_date %>
+    (date will go here)
+<br><br>
+<%= link_to 'Edit Goal', edit_post_path(@post) %>
+<%= link_to 'Delete Goal', post_path(@post), method: :delete %>
 
-<%= link_to 'Edit', edit_post_path(@post) %>
-<%= link_to 'Delete', post_path(@post), method: :delete %>
 
-<%= link_to 'Back', posts_path  %>
 
 <%= render 'comments' %>
+<br>
+<%= link_to 'Back', posts_path  %>
