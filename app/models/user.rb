@@ -5,11 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
-  has_many: :comments
-  has_many: :commented_goals (goals), through :comments
+  has_many :comments
+  has_many :commented_goals, class_name: 'Post', foreign_key: 'post_id', through: :comments
 
-
-  # has_many :comments, through: :posts
 
 
 end
