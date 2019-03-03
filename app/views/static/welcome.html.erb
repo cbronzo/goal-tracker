@@ -1,12 +1,7 @@
 
 
 <% if user_signed_in? %>
-  <h1>Welcome, <%= current_user.email %>!</h1>
-  <h3> Would you like to see your current goals?</h3>
-
-
-
-
+  <center><h1><%= current_user.email.capitalize %>'s Goal Dashboard</h1>
 
   <%# <% @posts.user.each do |post| %>
     <!-- <div> -->
@@ -17,18 +12,17 @@
     <!-- </div> -->
 
 
+  <button type="button"><%= link_to 'View all My Goals!', posts_path %></button>
+  <br><br>
+  <!-- need to change posts_path to user_posts_path -->
 
-
-
-  <%= link_to 'My Goals', posts_path %><br>
-  <h3>Would you like to add a new goal? </h3>
-  <%= link_to 'Create a New Goal', new_post_path %>
+  <button type="button"><%= link_to 'Create a New Goal!', new_post_path %></button></center>
 <% else %>
-  <h1>Welcome to the Goal Tracker!</h1>
-  <h2>A place to map out your goals...</h2>
-  Already signed up? <br>
-  <b><%= link_to 'Login', new_user_session_path %> </b><br><br>
-  If you are new, please: <br>
-  <b><%= link_to 'Sign Up', new_user_registration_path %></b>
+  <center><h1>GOAL CHEER</h1>
+  <i><h2>A place to map out your goals with a supportive community cheering you on!</h2></i>
+  <b>Already signed up? </b><br><br>
+  <button type="button"><%= link_to 'Login', new_user_session_path %></button><br><br>
+  <b>Ready to start tracking your goals?</b><br><br>
+<button type="button"><%= link_to 'Sign Up Now', new_user_registration_path %></button></center>
+
 <% end %>
-<br>
