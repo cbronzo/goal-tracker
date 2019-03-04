@@ -1,22 +1,28 @@
-<h1>Create a New Goal</h1>
 <div>
  <%= form_for @post do |f| %>
-   <b><label>My goal is to...</label></b>
-   <br>
-   <%= f.text_field :title %>
-   <br>
-   <br>
-   <b><label>About my goal:</label></b>
-   <br>
-   <%= f.text_area :description %>
-   <br>
-   <br>
-   <b><label>I'd like to have it done by?</label></b>
-   <br>
-   <%= f.text_field :due_date %>
-   <br>
-   <br>
+   <b><label>My goal is to...</label></b><br>
+   <%= f.text_area :title, :cols => 40, :rows => 2 %>
+   <br><br>
+   <b><label>About (description, plan of action, thoughts, obstacles, etc):</label></b><br>
+   <%= f.text_area :description, :cols => 70, :rows => 6 %>
+   <br><br>
+   <b><label>I'd like to have it done by?</label></b><br>
+   <%= f.date_field :due_date %>
+   <br><br>
+   <b><label>Ongoing?</label></b><br>
+   <%= f.check_box :ongoing %>
+   <br><br><b><label>Difficulty?</label></b><br>
+   <%= f.text_field :difficulty %>
+   <br><br><b><label>Category</label></b><br>
+   <%= f.text_field :category %>
+   <br><br><b><label>Priority Level</label></b><br>
+   <%= f.text_field :priority %>
+   <br><br><b><label>My Progress</label></b><br>
+   <%= f.text_field  :progress %>
+   <br><br><b><label>Question for Others?</label></b><br>
+   <%= f.text_area :question %>
+   <br><br>
 
-   <%= f.submit %>
+   <%= f.submit "Submit Goal"%>
  <% end %>
 </div>
