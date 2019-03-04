@@ -3,12 +3,11 @@ class Post < ApplicationRecord
   has_many :users, through: :comments
   has_many :comments
 
-  validates :title, presence: true
-  validates :description, presence: true
-  # validates :title, :minimum => 10, allow_blank: false
-  # validates :description, :minimum => 20, allow_blank: false
-  # validates :due_date, allow_blank: true
-  # validates :due_date, :type => Date
+  validates :title, presence: true, length: { minimum: 8 }
+  validates :description, presence: true, length: { minimum: 20, too_short: "Description too short" }
+
+
+
 
 
 
