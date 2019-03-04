@@ -1,13 +1,22 @@
-<h1>My Goals:</h1>
+<center><h1><%= current_user.email.capitalize %>'s Dashboard</h1>
 
-<%= link_to 'Create a New Goal', new_post_path %> <br>
+<button type="button"><%= link_to 'Create a New Goal!', new_post_path %></button><br>
 
+<h3>My Goals:</h3>
 
 
 <% @posts.each do |post| %>
   <div>
-    <h3><%= link_to post.title.capitalize, post_path(post) %>!</h3>
+    <% if post.title.capitalize.start_with?("To")%>
+      <h4><%= link_to post.title.capitalize.sub("To",""), post_path(post) %></h4>
+    <% else %>
+
+      <h4><%= link_to post.title.capitalize, post_path(post) %></h4>
+    <% end %>
     <i><%= post.description %></i>
+
   </div>
   <br>
-<% end %>
+<% end %> </center>
+
+<%= link_to 'Back to All User Goals', root_path  %>
