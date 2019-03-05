@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    if params[:user_id].present?
+      @posts = Post.where(user_id: params[:user_id])
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -13,9 +17,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new post_params
     if @post.save
-      redirect_to posts_path, notice: 'Post created'
+      redirect_to user_post_path(current_user.id, @post.id), notice: 'Post created'
     else
-      Rails.logger.info @post.errors.full_messages
+      flash[:alert] = @post.errors.full_messages.join("; ")
       render :new
     end
   end
@@ -42,10 +46,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # def add_cheer
-  #   @cheer = Post.cheer
-  #   @cheer.sum(:total)
-  # end
 
   private
 
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :due_date)
+    params.require(:post).permit(:title, :description, :due_date, :ongoing, :difficulty, :category, :priority, :progress, :question)
   end
 
 end
