@@ -1,4 +1,4 @@
-<%= form_for @post.comments.new, url: "posts/#{@post.id}/comments" do |f| %>
+<%= form_for @post.comments.new, url: post_comments_path(@post), method: :post do |f| %>
   <%= f.text_area :comment_text, :cols => 55, :rows => 4 %> <br>
   <%= f.submit %>
 <% end %>
