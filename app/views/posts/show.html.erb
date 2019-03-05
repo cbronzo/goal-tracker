@@ -9,20 +9,18 @@
       <h3><b>I am going to have this done by:</b></h3>
       <p><%= @post.due_date.strftime("%B %e, %Y") %> which is 'x' days away.
   <% else %>
-    This is ongoing or long-term
+    <b>This is an ongoing goal!<b>
   <% end %>
   <br><br>
-  <h3><b>Ongoing?</b></h3><br>
-  <%= @post.ongoing %><br><br>
-  <h3><b>Difficulty</b></h3>
+  <h3><b><u>Difficulty</u></b></h3>
   <%= @post.difficulty %><br><br>
-  <h3><b>Category</b></h3>
+  <h3><b><u>Category</u></b></h3>
   <%= @post.category %><br><br>
-  <h3><b>Priority</b></h3>
+  <h3><b><u>Priority</u></b></h3>
   <%= @post.priority %><br><br>
-  <h3><b>Progress</b></h3>
+  <h3><b><u>Progress</u></b></h3>
   <%= @post.progress %><br><br>
-  <h3><b>Question for Others</b></h3>
+  <h3><b><u>Question for Others?</u></b></h3>
   <%= @post.question %>
 
 
