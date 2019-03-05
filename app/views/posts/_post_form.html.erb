@@ -6,21 +6,22 @@
    <b><label>About (description, plan of action, thoughts, obstacles, etc):</label></b><br>
    <%= f.text_area :description, :cols => 70, :rows => 6 %>
    <br><br>
-   <b><label>I'd like to have it done by?</label></b><br>
-   <%= f.date_field :due_date %>
-   <br><br>
    <b><label>Ongoing?</label></b><br>
    <%= f.check_box :ongoing %>
-   <br><br><b><label>Difficulty?</label></b><br>
-   <%= f.text_field :difficulty %>
-   <br><br><b><label>Category</label></b><br>
-   <%= f.text_field :category %>
-   <br><br><b><label>Priority Level</label></b><br>
-   <%= f.text_field :priority %>
+   <br><br>
+   <b><label>I'd like to have it done by?</label></b><br>
+   <%= f.date_field :due_date %>
+   <br><br><b><label>Difficulty? (Select One)</label></b><br>
+   <%= f.select :difficulty, (['Very Difficult', 'Difficult', 'Somewhat Difficult', 'Somewhat Easy', 'Easy', 'Very Easy']), :include_blank => true %>
+   <br><br><b><label>Category (Select One)</label></b><br>
+   <%= f.select :category, (['Personal', 'Work', 'Family', 'Finance', 'Education', 'Health']), :include_blank => true  %>
+   <br><br><b><label>Priority Level<br>
+     (Select One: 5 = MOST Urgent, 1 = NO Urgency)</label></b><br>
+     <%= f.select :priority, ([5, 4, 3, 2, 1]), :include_blank => true %>
    <br><br><b><label>My Progress</label></b><br>
-   <%= f.text_field  :progress %>
+   <%= f.select :progress, ([['Completed!', 6], ['Almost done!', 5], ['Halfway there!', 4], ['Making progress!', 3], ['Just starting!', 2], ['Struggling...', 1]]), :include_blank => true %>
    <br><br><b><label>Question for Others?</label></b><br>
-   <%= f.text_area :question %>
+   <%= f.text_area :question, :cols => 35, :rows => 4 %>
    <br><br>
 
    <%= f.submit "Submit Goal"%>
