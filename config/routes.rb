@@ -10,14 +10,21 @@ Rails.application.routes.draw do
 
   root to: 'static#welcome'
 
-  resources :posts do
-    member do
-      get '/cheer' => 'posts#cheer'
+   # resources :posts
+    # member do
+    #   get '/cheer' => 'posts#cheer'
+    # end
+
+
+  resources :users do
+    resources :posts do
+      resources :comments
     end
   end
 
-  resources :users
-
   resources :posts do
-    resources: :comments
+    resources :comments
+  end
 end
+
+resources :comments
