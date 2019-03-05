@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     #get 'logout', to: 'devise/sessions#destroy'
   end
 
-  root to: 'static#welcome'
+  root to: 'posts#index'
+
+  get '/welcome' => 'static#welcome'
 
    # resources :posts
     # member do
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
 end
 
-resources :comments
+# resources :comments
