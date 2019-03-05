@@ -12,7 +12,7 @@
    <b><label>I'd like to have it done by?</label></b><br>
    <%= f.date_field :due_date %>
    <br><br><b><label>Difficulty? (Select One)</label></b><br>
-   <%= f.select :difficulty, (['Very Difficult', 'Difficult', 'Somewhat Difficult', 'Somewhat Easy', 'Easy', 'Very Easy']), :include_blank => true %>
+   <%= f.select :difficulty, (Post.difficulty_mapping), :include_blank => true %>
    <br><br><b><label>Category (Select One)</label></b><br>
    <%= f.select :category, (['Personal', 'Work', 'Family', 'Finance', 'Education', 'Health']), :include_blank => true  %>
    <br><br><b><label>Priority Level<br>
