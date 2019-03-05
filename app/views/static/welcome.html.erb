@@ -4,23 +4,18 @@
 
   <center>
     <h2> Welcome! </h2>
-    <h1>All User Goals</h1>
 
 
-  <%# <% @posts.user.each do |post| %>
-    <!-- <div> -->
-      <%# <!-- Title: <%= user_posts.title %>
-      <%# Description: <%= post.description %>
-      <%# <%= link_to 'Open', post_path(post) %>
-      <%# <% end %>
-    <!-- </div> -->
+
 
     <br>
   <button type="button"><%= link_to 'View My Goals!', posts_path %></button>
 
-  <!-- need to change posts_path to user_posts_path -->
+  <!-- need to change user_posts_path -->
 
-  <button type="button"><%= link_to 'Create a New Goal!', new_post_path %></button></center>
+  <button type="button"><%= link_to 'Create a New Goal!', new_post_path %></button>
+  <h1>All User Goals</h1></center>
+
 <% else %>
   <center><h1>GOAL CHEER</h1>
   <i><h2>A place to map out your goals with a supportive community cheering you on!</h2></i>
@@ -30,11 +25,17 @@
 <button type="button"><%= link_to 'Sign Up Now', new_user_registration_path %></button></center>
 
 <% end %>
-
+<br>
 <% if user_signed_in? %>
-<center><br>[list goal]<br>
-[list goal]<br>
-[list goal]<br>
-[list goal]<br>
-[list goal]</center>
+<% Post.all.each do |post| %>
+  <div>
+    <center><% if post.title.capitalize.start_with?("To")%>
+      <h4><%= link_to post.title.capitalize.sub("To",""), post_path(post) %></h4>
+    <% else %>
+      <h4><%= link_to post.title.capitalize, post_path(post) %></h4>
+    <% end %>
+    <i><%= post.description %></i><br>
+    <br>
+    <%  end %>
+  </div>
 <% end %>
