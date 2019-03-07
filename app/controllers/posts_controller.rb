@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :post_creator, only: [:edit, :update, :destroy]
 
   def index
     if params[:user_id].present?
@@ -52,6 +53,15 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find params[:id]
   end
+
+  def post_creator
+    @post = Post.find params[:id]
+    if current_user.id == @post.user.id
+    else
+      redirect_to root_url
+    end
+  end
+
 
   def post_params
     params.require(:post).permit(:title, :description, :due_date, :ongoing, :difficulty, :category, :priority, :progress, :question)
