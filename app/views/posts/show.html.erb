@@ -17,17 +17,21 @@
   <h3><b><u>Category</u></b></h3>
   <%= @post.category %><br><br>
   <h3><b><u>Priority</u></b></h3>
-  <%= @post.priority %><br><br>
+  <%= @post.priority_to_str %><br><br>
   <h3><b><u>Progress</u></b></h3>
-  <%= @post.progress %><br><br>
+  <%= @post.progress_to_str %><br><br>
   <h3><b><u>Question for Others?</u></b></h3>
   <%= @post.question %>
 
 
+<% @post = Post.find params[:id] %>
+<% if current_user.id == @post.user.id %>
 <br><br><br><br>
 <button type="button"><%= link_to 'Edit Goal', edit_post_path(@post) %></button>
 <button type="button"><%= link_to 'Delete Goal', post_path(@post), method: :delete %></button>
 <br><br><br><br>
+<% end %>
+
 
 
 
