@@ -9,6 +9,10 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+
+    if params[:sort_by].present?
+      @posts = @posts.send(params[:sort_by].to_sym)
+    end
   end
 
   def new
