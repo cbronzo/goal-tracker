@@ -1,0 +1,2 @@
+var $selector = document.getElementById('post_id_<%= @cheer.post_id %>');
+$selector.innerHTML = '<%= escape_javascript(render partial: 'posts/post', locals: {post: @cheer.post}) %>';
