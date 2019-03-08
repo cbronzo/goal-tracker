@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+
+  # authenticated :user do
+  #   root 'static#welcome', as: 'authenticated_root'
+  # end
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
@@ -26,6 +32,14 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+  end
+
+  resources :posts do
+    resources :cheers
+
+    member do
+      get '/cheer' => 'cheers#create', as: 'cheer'
+    end
   end
 
 end

@@ -7,8 +7,24 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 8 }
   validates :description, presence: true, length: { minimum: 20, too_short: "too short" }
+  #
+  scope :newest, -> { order(created_at: :desc)}
+  scope :oldest, -> { order(:created_at)}
+  scope :easiest, -> { order(difficulty: :asc).where.not(difficulty: nil)}
+  scope :hardest, -> { order(difficulty: :desc).where.not(difficulty: nil)}
+  scope :categories, -> { order(category: :asc).where.not(category: nil)}
+  scope :high_priority, -> { order(priority: :desc).where.not(priority: nil)}
+  scope :low_priority, -> { order(priority: :asc).where.not(priority: nil)}
+  scope :most_progress, -> { order(progress: :desc).where.not(progress: nil)}
+  scope :soonest_due_date, -> { order(due_date: :asc).where.not(due_date: nil)}
+  # scope :ongoing?, -> { where(ongoing?: 1)}
 
-  
+  # scope :most_commented, -> { order(:comments.count, :desc)}
+  # scope :most_cheered, -> { order(cheers.count:, :desc)}
+
+  def self.find_for_oauth(auth)
+      find_or_create_by(uid: auth.uid, provider: auth.provider)
+    end
 
   DIFFICULTY_MAPPING = {
     1 => 'Very Easy',
