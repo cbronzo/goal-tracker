@@ -1,21 +1,32 @@
 <center><h1><%= current_user.email.capitalize %>'s Dashboard</h1>
 
-<button type="button"><%= link_to 'Create a New Goal!', new_post_path %></button><br>
+<%= posts_link %><br>
+<%= link_to 'Create a New Goal!', new_user_post_path(current_user.id) %><br>
 
-<h3>My Goals:</h3>
+<h3>All Goals:</h3>
+<h4>Sort by:</h4>
+
+
+
+<%= sorted_posts_link('Newest') %>
+<%= sorted_posts_link('Oldest') %>
+<%= sorted_posts_link('Easiest') %>
+<%= sorted_posts_link('Hardest') %>
+<%= sorted_posts_link('Categories') %>
+<%= sorted_posts_link('High_Priority') %>
+<%= sorted_posts_link('Low_Priority') %>
+<%= sorted_posts_link('Most_Progress') %>
+<%= sorted_posts_link('Most_Commented') %>
+<%= sorted_posts_link('Soonest_Due Date') %>
+<%= sorted_posts_link('Ongoing?') %>
+<%= sorted_posts_link('Most_Cheered') %>
+
+
+
 
 
 <% @posts.each do |post| %>
-  <div>
-    <% if post.title.capitalize.start_with?("To")%>
-      <h4><%= link_to post.title.capitalize.sub("To",""), post_path(post) %></h4>
-    <% else %>
-
-      <h4><%= link_to post.title.capitalize, post_path(post) %></h4>
-    <% end %>
-    <i><%= post.description %></i>
-
-  </div>
+  <%= render partial: 'post', locals: { post: post} %>
   <br>
 <% end %> </center>
 
