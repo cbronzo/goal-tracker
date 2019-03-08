@@ -7,7 +7,8 @@
   <br><br>
   <% if @post.due_date %>
       <h3><b>I am going to have this done by:</b></h3>
-      <p><%= @post.due_date.strftime("%B %e, %Y") %> which is 'x' days away.
+      <p><%= @post.due_date.strftime("%B %e, %Y") %> which is
+        <%= distance_of_time_in_words((@post.due_date.strftime("%B %e, %Y")), Time.now)  %> away.
   <% else %>
     <b>This is an ongoing goal!<b>
   <% end %>
