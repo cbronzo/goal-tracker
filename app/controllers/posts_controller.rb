@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :post_creator, only: [:edit, :update, :destroy]
 
   def index
-    if params[:user_id].present?
+    if params[:user_id].present? 
       @posts = Post.where(user_id: params[:user_id])
     else
       @posts = Post.all
