@@ -5,9 +5,6 @@ Rails.application.routes.draw do
 
 
 
-  # authenticated :user do
-  #   root 'static#welcome', as: 'authenticated_root'
-  # end
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'

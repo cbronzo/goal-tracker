@@ -1,5 +1,6 @@
 module UserHelper
 
+
   def posts_link
     if params[:user_id].present?
       link_to 'View All Goals', root_path
