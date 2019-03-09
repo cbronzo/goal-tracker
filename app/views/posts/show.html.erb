@@ -2,6 +2,9 @@
 <center><h1>My goal is to <u><%= @post.title.upcase %></u></h1>
    <i>Created on <%= @post.created_at.strftime("%B %e, %Y") %> </i>
 <br><br>
+<%= link_to image_tag('cheer_red.png', size: '30x30'), cheer_post_path(@post.id, direction: 'downvote'), remote: true %>
+<span id="post_<%= @post.id %>_cheers_count"><small><%= @post.cheers.count %></small></span>
+<br><br>
 <h3><b>About my goal and how I will accomplish it:</b></h3>
 <p><i><%= @post.description.capitalize %></i>
   <br><br>
@@ -13,6 +16,7 @@
     <b>This is an ongoing goal!<b>
   <% end %>
   <br><br>
+
   <h3><b><u>Difficulty</u></b></h3>
   <%= @post.difficulty_to_str %><br><br>
   <h3><b><u>Category</u></b></h3>
