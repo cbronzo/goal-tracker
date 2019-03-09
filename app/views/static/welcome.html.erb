@@ -1,41 +1,52 @@
-
-
 <% if user_signed_in? %>
+Welcome, <i><%= current_user.email %> </i>
 
-  <center>
-    <h2> Welcome! </h2>
+<center><%= posts_link %><br>
+<%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %><br>
+<h3>All Goals:</h3>
+
+<div class="dropdown">
+  <button class="dropbtn">Sort By</button>
+  <div class="dropdown-content">
+    <%= sorted_posts_link('Newest')%>
+    <%= sorted_posts_link('Oldest') %>
+    <%= sorted_posts_link('Easiest') %>
+    <%= sorted_posts_link('Hardest') %>
+    <%= sorted_posts_link('High_Priority','Highest Priority')%>
+    <%= sorted_posts_link('Low_Priority', 'Lowest Priority') %>
+    <%= sorted_posts_link('Most_Progress', 'Most Progress') %>
+    <%= sorted_posts_link('Most_Commented', 'Most Comments') %>
+    <%= sorted_posts_link('Soonest_Due_Date', 'Goal End Date') %>
+    <%= sorted_posts_link('Ongoing?', 'Ongoing') %>
+    <%= sorted_posts_link('Most_Cheered', 'Most Cheers') %>
+  </div>
+</div>
+
+<% Post.all.each do |post| %>
+  <%= render partial: 'posts/post', locals: { post: post} %>
+  <br><center>
+<% end %>
+
+  <% else %>
 
 
+  <center><h2> Welcome! </h2><center><h1>GOAL CHEER</h1>
 
-
-    <br>
-  <button type="button"><%= link_to 'View My Goals!', posts_path %></button>
-
-  <!-- need to change user_posts_path -->
-
-  <button type="button"><%= link_to 'Create a New Goal!', new_post_path %></button>
-  <h1>All User Goals</h1></center>
-
-<% else %>
-  <center><h1>GOAL CHEER</h1>
   <i><h2>A place to map out your goals with a supportive community cheering you on!</h2></i>
   <b>Already signed up? </b><br><br>
+
   <button type="button"><%= link_to 'Login', new_user_session_path %></button><br><br>
   <b>Ready to start tracking your goals?</b><br><br>
-<button type="button"><%= link_to 'Sign Up Now', new_user_registration_path %></button></center>
 
-<% end %>
-<br>
-<% if user_signed_in? %>
-<% Post.all.each do |post| %>
-  <div>
-    <center><% if post.title.capitalize.start_with?("To")%>
-      <h4><%= link_to post.title.capitalize.sub("To",""), post_path(post) %></h4>
-    <% else %>
-      <h4><%= link_to post.title.capitalize, post_path(post) %></h4>
-    <% end %>
-    <i><%= post.description %></i><br>
-    <br>
-    <%  end %>
-  </div>
-<% end %>
+  <button type="button"><%= link_to 'Sign Up Now', new_user_registration_path %></button></center>
+
+
+
+
+
+
+
+
+
+
+  <% end %>

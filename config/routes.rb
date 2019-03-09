@@ -11,17 +11,15 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
-    #get 'logout', to: 'devise/sessions#destroy'
+    get 'logout', to: 'devise/sessions#destroy'
   end
 
-  root to: 'posts#index'
 
-  get '/welcome' => 'static#welcome'
+  root 'static#welcome'
 
-   # resources :posts
-    # member do
-    #   get '/cheer' => 'posts#cheer'
-    # end
+  # root to: 'posts#index'
+
+
 
 
   resources :users do
@@ -43,5 +41,3 @@ Rails.application.routes.draw do
   end
 
 end
-
-# resources :comments
