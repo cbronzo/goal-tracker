@@ -1,15 +1,3 @@
-<%# if current_user.id%>
-    <!-- <center><h1>User: Goals</h1></center> -->
-<%# else %>
-
-<center><h1>My Goals</h1>
-<i><%= current_user.email.capitalize %> </i>
-<%# end %>
-<br>
-<br>
-<%= posts_link %><br>
-<%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %><br>
-
 <div class="dropdown">
   <button class="dropbtn">Sort By</button>
   <div class="dropdown-content">
@@ -17,6 +5,7 @@
     <%= sorted_posts_link('Oldest') %>
     <%= sorted_posts_link('Easiest') %>
     <%= sorted_posts_link('Hardest') %>
+    <%= sorted_posts_link('Categories', 'Category') %>
     <%= sorted_posts_link('High_Priority','Highest Priority')%>
     <%= sorted_posts_link('Low_Priority', 'Lowest Priority') %>
     <%= sorted_posts_link('Most_Progress', 'Most Progress') %>
@@ -26,12 +15,3 @@
     <%= sorted_posts_link('Most_Cheered', 'Most Cheers') %>
   </div>
 </div>
-
-
-
-
-
-<% @posts.each do |post| %>
-  <%= render partial: 'post', locals: { post: post} %>
-  <br>
-<% end %> </center>
