@@ -1,20 +1,25 @@
+
 <div id="post_id_<%= post.id %>">
+  <% if current_user.voted_this(post.id) %>
+  <%= link_to image_tag('cheer_red.png', size: '30x30'), cheer_post_path(post.id, direction: 'downvote'), remote: true %>
+  <% else %>
+  <%= link_to image_tag('cheer_black.png', size: '30x30'), cheer_post_path(post.id, direction: 'upvote'), remote: true %>
+  <% end %>
+
+  <span id="post_<%= post.id %>_cheers_count"><small><%= post.cheers.count %></small></span>
+
+
+
   <% if post.title.capitalize.start_with?("To ") %>
     <h4><%= link_to post.title.capitalize.sub("To ","").capitalize, post_path(post) %></h4>
   <% else %>
     <h4><%= link_to post.title.capitalize, post_path(post), id: "post_id_#{post.id}" %></h4>
   <% end %>
 
-  <% if current_user.voted_this(post.id) %>
-    <%= link_to image_tag('cheer_red.png', size: '30x30'), cheer_post_path(post.id, direction: 'downvote'), remote: true %>
-  <% else %>
-    <%= link_to image_tag('cheer_black.png', size: '30x30'), cheer_post_path(post.id, direction: 'upvote'), remote: true %>
-  <% end %>
+<br>
 
-
-  <span id="post_<%= post.id %>_cheers_count"><small><%= post.cheers.count %></small></span>
-  <div id="post_id_<%= post.id %>">
-
+  <span class="content" title="<%= post.description %>"><%= post.description.truncate(75) %></span>
+<br>
   <% if %>
   <% !post.question.empty? %>
   <%= image_tag('question.png', size: '18x18') %>
@@ -22,5 +27,7 @@
 
   <%= image_tag('comment.png', size: '18x18') %>
   <span id="post_<%= post.id %>_comments_count"><small><%= post.comments.count %></small>
+<br>
+<br>
 
 </div>

@@ -1,11 +1,11 @@
-email<center><h2>Sign up for GOAL CHEER</h2>
+<center><h2>Sign up for GOAL CHEER</h2>
   <h3>Enter your information below to start tracking your goals!</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <b><%= f.label :email, "email*" %></b>
+    <b><%= f.label :email, "Email*" %></b>
     <br>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
