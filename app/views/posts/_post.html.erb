@@ -11,8 +11,16 @@
     <%= link_to image_tag('cheer_black.png', size: '30x30'), cheer_post_path(post.id, direction: 'upvote'), remote: true %>
   <% end %>
 
-  <span id="post_<%= post.id %>_cheers_count"><small><%= post.cheers.count %> cheer(s)</small></span>
-  <br>
-  <br>
-  <i><%= post.description %></i>
+
+  <span id="post_<%= post.id %>_cheers_count"><small><%= post.cheers.count %></small></span>
+  <div id="post_id_<%= post.id %>">
+
+  <% if %>
+  <% !post.question.empty? %>
+  <%= image_tag('question.png', size: '18x18') %>
+  <% end %>
+
+  <%= image_tag('comment.png', size: '18x18') %>
+  <span id="post_<%= post.id %>_comments_count"><small><%= post.comments.count %></small>
+
 </div>
