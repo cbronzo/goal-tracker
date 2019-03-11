@@ -37,13 +37,13 @@
     }
     #mainNav .navbar-brand{
         padding:.5rem 0;
-        color:rgba(255,255,255,.5)
+        color:white
     }
     #mainNav .nav-link{
         -webkit-transition:none;
         transition:none;
         padding:2rem 1.5rem;
-        color:rgba(255,255,255,.5)
+        color: white
     }
     #mainNav .nav-link:hover{
         color:rgba(255,255,255,.75)
@@ -202,7 +202,26 @@ a:focus,a:hover{
 }
 footer {
     padding: 1rem 0;
-   position: absolute;
+   position: fixed;
    bottom: 0;
    width: 100%;
+}
+
+body {
+    background-image: url(14.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+
+}
+
+center {
+
+  background-color: white;
+  width: 500px;
+  height: cover;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  margin-top: 100px;
+  margin-bottom: 40px
 }
