@@ -20,14 +20,15 @@
 
   <span class="content" title="<%= post.description %>"><%= post.description.truncate(75) %></span>
 <br>
-  <% if %>
-  <% !post.question.empty? %>
-  <%= image_tag('question.png', size: '18x18') %>
-  <% end %>
-
   <%= image_tag('comment.png', size: '18x18') %>
   <span id="post_<%= post.id %>_comments_count"><small><%= post.comments.count %></small>
-<br>
-<br>
+
+    <% if %>
+    <% !post.question.empty? %>
+    <%= image_tag('question2.png', size: '15x15') %>
+    <% end %>
+<hr style="border: 1px solid #007bff;"/>
+
+
 
 </div>

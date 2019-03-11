@@ -5,8 +5,8 @@ class Post < ApplicationRecord
   has_many :users, through: :cheers
   has_many :cheers
 
-  validates :title, presence: true, length: { minimum: 8 }
-  validates :description, presence: true, length: { minimum: 20, too_short: "too short" }
+  validates :title, presence: true, length: { minimum: 8, too_short: "is too short" }
+  validates :description, presence: true, length: { minimum: 20, too_short: "is too short" }
 
   scope :newest, -> { order(created_at: :desc)}
   scope :oldest, -> { order(:created_at)}
@@ -19,6 +19,7 @@ class Post < ApplicationRecord
   scope :ongoing?, -> { order(:ongoing).where(ongoing: 1)}
   scope :most_commented, -> { left_joins(:comments).group(:id).order("COUNT(comments.post_id) DESC")}
   scope :most_cheered, -> { left_joins(:cheers).group(:id).order("COUNT(cheers.post_id) DESC")}
+  scope :grouped_by_category, -> { all.group_by(&:category) }
 
 
 

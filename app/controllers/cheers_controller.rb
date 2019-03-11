@@ -23,6 +23,7 @@ class CheersController < ApplicationController
         flash[:error] = 'Unable to remove cheer. Please try again.'
       end
     end
+
   end
 
 

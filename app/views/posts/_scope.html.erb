@@ -1,16 +1,21 @@
-<div class="dropdown">
-  <button class="dropbtn">Sort By</button>
-  <div class="dropdown-content">
-    <%= sorted_posts_link('Newest')%>
-    <%= sorted_posts_link('Oldest') %>
-    <%= sorted_posts_link('Easiest') %>
-    <%= sorted_posts_link('Hardest') %>
-    <%= sorted_posts_link('High_Priority','Highest Priority')%>
-    <%= sorted_posts_link('Low_Priority', 'Lowest Priority') %>
-    <%= sorted_posts_link('Most_Progress', 'Most Progress') %>
-    <%= sorted_posts_link('Most_Commented', 'Most Comments') %>
-    <%= sorted_posts_link('Soonest_Due_Date', 'Goal End Date') %>
-    <%= sorted_posts_link('Ongoing?', 'Ongoing') %>
-    <%= sorted_posts_link('Most_Cheered', 'Most Cheers') %>
+<div class="dropdown show">
+  <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <b>Sort By:</b>
+
+
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" <%= sorted_posts_link('Newest')%></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Oldest') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Easiest') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Hardest') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('High_Priority','Highest Priority')%></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Low_Priority', 'Lowest Priority') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Most_Progress', 'Most Progress') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Most_Commented', 'Most Comments') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Soonest_Due_Date', 'Goal End Date') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Ongoing?', 'Ongoing') %></a>
+    <a class="dropdown-item" <%= sorted_posts_link('Most_Cheered', 'Most Cheers') %></a>
   </div>
 </div>

@@ -1,11 +1,14 @@
+<br>
+<br>
 <h3><u><i>Comments</i></u></h3>
 
 <% @post.comments.each do |comment| %>
   <b><%= comment.comment_text %></b><br>
-  <i>By <%= comment.user.email %>
+  <small><i>By <%= comment.user.email %>
     <br>
-    <%= comment.created_at.strftime("%B %e, %Y at %I:%M %p")%> UTC</i><br>
+    <%= comment.created_at.strftime("%B %e, %Y at %I:%M %p")%> UTC</i><br></small>
   <br>
  <% end %>
 
 <%= render 'comment_form' %>
+<br><br>

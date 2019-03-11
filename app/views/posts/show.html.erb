@@ -1,6 +1,8 @@
 
+<br>
+<br>
 <center><h1>My goal is to <u><%= @post.title.upcase %></u></h1>
-   <i>Created on <%= @post.created_at.strftime("%B %e, %Y") %> </i>
+   <i>Created on <%= @post.created_at.strftime("%B %e, %Y")%> by <%= @post.user.email %> </i>
 <br><br>
 <%= link_to image_tag('cheer_red.png', size: '30x30'), cheer_post_path(@post.id, direction: 'downvote'), remote: true %>
 <span id="post_<%= @post.id %>_cheers_count"><small><%= @post.cheers.count %></small></span>
@@ -17,20 +19,37 @@
   <% end %>
   <br><br>
 
-  <h3><b><u>Difficulty</u></b></h3>
+
+  <% if @post.difficulty != nil %>
+  <h3><u>Difficulty</u></h3>
   <%= @post.difficulty_to_str %><br><br>
+    <% end %>
+
+
+    <% if !@post.category.empty? %>
   <h3><b><u>Category</u></b></h3>
   <%= @post.category %><br><br>
+  <% end %>
+
+<% if @post.priority != nil %>
   <h3><b><u>Priority</u></b></h3>
   <%= @post.priority_to_str %><br><br>
+  <% end %>
+
+  <% if @post.progress != nil %>
   <h3><b><u>Progress</u></b></h3>
   <%= @post.progress_to_str %><br><br>
+  <% end %>
+
+  <% if !@post.question.empty? %>
   <h3><b><u>Question for Others?</u></b></h3>
   <%= @post.question %>
+  <% end %>
+
 
 
 <% @post = Post.find params[:id] %>
-<% if current_user.id == @post.user.id %>
+<% if current_user.id == @post.user_id %>
 <br><br><br><br>
 <button type="button"><%= link_to 'Edit Goal', edit_post_path(@post) %></button>
 <button type="button"><%= link_to 'Delete Goal', post_path(@post), method: :delete %></button>

@@ -1,20 +1,21 @@
 <% if user_signed_in? %>
-
+<center>
 <br>
 <br>
 <br>
-<center><h1>All Goals</h1>
+<h1><u>All Goals</u></h1>
+  <br>
   <button type="button"><%= posts_link %></button>
   <button type="button"><%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %></button><br>
 
-
+<br>
 <%= render 'posts/scope' %>
-
+<br>
 <% Post.all.each do |post| %>
   <%= render partial: 'posts/post', locals: { post: post} %>
-  <br><center>
+  <br>
 <% end %>
-
+<center>
 
 
 <% else %>
@@ -23,14 +24,14 @@
 <header class="masthead">
   <div class="container d-flex h-100 align-items-center">
     <div class="mx-auto text-center">
+
       <h1 style=font-size:82px class="mx-auto my-0 text-uppercase">GOAL CHEER</h1>
-      <i><h2 style=font-size:15px class="text-white-50 mx-auto mt-2 mb-5">A place to map out your goals with a supportive community cheering you on!</h2></i>
-      <a  width="100" height="100" class="btn btn-primary js-scroll-trigger" <%= link_to 'Log In', new_user_session_path %></a>
+      <br><br>
+      <i><h2 style=font-size:18px class="text-white-50 mx-auto mt-10 mb-5">A place to map out your goals with a supportive community cheering you on!</h2></i>
+      <a   class="btn btn-primary js-scroll-trigger" <%= link_to 'Log In', new_user_session_path %></a>
+      &emsp;&emsp;
         <a class="btn btn-primary js-scroll-trigger" <%= link_to 'Sign Up', new_user_registration_path %></a>
     </div>
   </div>
 </header>
 <% end %>
-
-< body>
-</body>

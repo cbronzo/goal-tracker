@@ -1,16 +1,18 @@
-<center><h1>My Goals</h1>
+<center><h1><u>My Goals</u></h1>
 <i><%= current_user.email.capitalize %> </i>
 <br>
 <br>
-<%= posts_link %><br>
-<%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %><br>
-
+<button type="button"><%= posts_link %></button>
+<button type="button"><%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %></button><br>
+<br>
 <%= render 'scope' %>
+<br>
 
 
 
 
 <% @posts.each do |post| %>
   <%= render partial: 'post', locals: { post: post} %>
-  <br>
 <% end %> </center>
+
+<%= link_to 'Back', posts_path  %>
