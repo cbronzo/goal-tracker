@@ -1,29 +1,34 @@
-# README
+# README - Rails Goal Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to 'GOAL CHEER," a community goal tracking application, built using Rails 5.2.2. Upon install, you will have access to an application that allows users to uniquely log in (can also log in through Facebook) and see all user goals, where a user can then 'cheer' on another user or comment on their goal.
+In addition, a user can create their own goals and log all kinds of goal attributes. They can then sort their goals or all user goals by different parameters. A user's goal can be edited, updated & deleted. All goals are public for the purpose of accountability and cheering others on! Enjoy!
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone this repo and run
 
-* System dependencies
+```bundle install```
 
-* Configuration
 
-* Database creation
+Then migrate the databases by running
 
-* Database initialization
+```db:migrate```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+To see the application in your browser, run
 
-* Deployment instructions
+```rails s```
 
-* ...
-# goal-tracker-rails
-# goal-tracker
-# goal-tracker
-# goal-tracker
-# goal-tracker
+
+and then go to
+
+http://localhost:3000
+
+Create an account to start goal setting or cheering on others!
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[cbronzo]/goal-tracker.
+
+## License
+The repository is available as open source under the terms of the MIT License.
