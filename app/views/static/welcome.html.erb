@@ -1,9 +1,12 @@
 <% if user_signed_in? %>
-Welcome, <i><%= current_user.email %> </i>
 
-<center><%= posts_link %><br>
-<%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %><br>
-<h3>All Goals:</h3>
+<br>
+<br>
+<br>
+<center><h1>All Goals</h1>
+  <button type="button"><%= posts_link %></button>
+  <button type="button"><%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %></button><br>
+
 
 <%= render 'posts/scope' %>
 
@@ -12,18 +15,22 @@ Welcome, <i><%= current_user.email %> </i>
   <br><center>
 <% end %>
 
-  <% else %>
 
 
-  <center><h2> Welcome! </h2><center><h1>GOAL CHEER</h1>
+<% else %>
 
-  <i><h2>A place to map out your goals with a supportive community cheering you on!</h2></i>
-  <b>Already signed up? </b><br><br>
+<!-- Header -->
+<header class="masthead">
+  <div class="container d-flex h-100 align-items-center">
+    <div class="mx-auto text-center">
+      <h1 style=font-size:82px class="mx-auto my-0 text-uppercase">GOAL CHEER</h1>
+      <i><h2 style=font-size:15px class="text-white-50 mx-auto mt-2 mb-5">A place to map out your goals with a supportive community cheering you on!</h2></i>
+      <a  width="100" height="100" class="btn btn-primary js-scroll-trigger" <%= link_to 'Log In', new_user_session_path %></a>
+        <a class="btn btn-primary js-scroll-trigger" <%= link_to 'Sign Up', new_user_registration_path %></a>
+    </div>
+  </div>
+</header>
+<% end %>
 
-  <button type="button"><%= link_to 'Log In', new_user_session_path %></button><br><br>
-  <b>Ready to start tracking your goals?</b><br><br>
-
-  <button type="button"><%= link_to 'Sign Up Now', new_user_registration_path %></button></center>
-
-
-  <% end %>
+< body>
+</body>
