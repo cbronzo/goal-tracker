@@ -15,7 +15,7 @@ module UserHelper
   if params[:user_id].present?
     link_to text, user_posts_path(current_user.id, sort_by: sort_by.downcase)
   else
-    link_to text, posts_path(sort_by: sort_by.downcase)
+    link_to text, post_path(sort_by: sort_by.downcase)
   end
 end
 end
