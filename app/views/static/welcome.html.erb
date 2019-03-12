@@ -1,10 +1,8 @@
 <% if user_signed_in? %>
 <center>
-<br>
-<br>
-<br>
+
 <h1><u>All Goals</u></h1>
-  <br>
+  <br><br>
   <button type="button"><%= posts_link %></button>
   <button type="button"><%= link_to 'Create a New Goal', new_user_post_path(current_user.id) %></button><br>
 
