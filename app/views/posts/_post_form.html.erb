@@ -18,8 +18,7 @@
    <br><br><b><label>Category (Select One)</label></b><br>
    <%= f.select :category, (['Personal', 'Work', 'Family', 'Finance', 'Education', 'Health']), :include_blank => true  %>
 
-   <br><br><b><label>Priority Level<br>
-     (Select One: 5 = MOST Urgent, 1 = NO Urgency)</label></b><br>
+   <br><br><b><label>Priority Level</label></b><br>
      <%= f.select :priority, (Post.priority_mapping), :include_blank => true %>
 
    <br><br><b><label>My Progress</label></b><br>
