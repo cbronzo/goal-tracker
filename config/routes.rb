@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-
-
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'logout', to: 'devise/sessions#destroy'
@@ -13,10 +11,6 @@ Rails.application.routes.draw do
 
 
   root 'static#welcome'
-
-  # root to: 'posts#index'
-
-
 
 
   resources :users do
@@ -28,6 +22,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  resources :cheers, only: [:index]
 
   resources :posts do
     resources :cheers

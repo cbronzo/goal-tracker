@@ -2,6 +2,15 @@ class CheersController < ApplicationController
   before_action :authenticate_user!
 
 
+  def index
+    if !params[:post_id]
+      @cheer = Cheer.all.count
+    else
+      @post = Post.find_by_id(params[:post_id])
+      @cheer = @post.cheers.count
+    end
+  end
+
 
   def new
     @cheer = Cheer.new cheer_params.merge(post_id: params[:post_id], user_id: current_user.id)
@@ -23,6 +32,8 @@ class CheersController < ApplicationController
         flash[:error] = 'Unable to remove cheer. Please try again.'
       end
     end
+
+
 
   end
 
